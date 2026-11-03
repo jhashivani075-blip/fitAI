@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FitAI — Your Personal Fitness Coach</title>
+<style>
+:root{--bg:#0b0b16;--panel:#151528;--panel2:#1d1d35;--text:#f6f5ff;--muted:#a5a4bd;--purple:#9875ff;--pink:#e879f9;--green:#79e2b3;--line:#292943}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#27204a 0,transparent 32%),var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer;border:0}.app{display:grid;grid-template-columns:245px 1fr;min-height:100vh}.sidebar{padding:28px 18px;border-right:1px solid var(--line);background:#0e0e1c}.brand{font-size:24px;font-weight:800;letter-spacing:-1px;padding:0 12px 34px}.brand span{color:var(--purple)}.nav-label{color:#777690;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;padding:12px}.nav button{display:flex;gap:13px;align-items:center;width:100%;padding:13px 14px;margin:4px 0;border-radius:12px;background:transparent;color:#b8b7ce;text-align:left}.nav button.active,.nav button:hover{background:#27213f;color:white}.nav button.active{box-shadow:inset 3px 0 var(--purple)}.profile{margin:45px 8px 0;padding:14px;background:var(--panel);border-radius:14px;display:flex;gap:10px;align-items:center}.avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),var(--pink));font-weight:800}.profile small{display:block;color:var(--muted)}main{padding:32px 4.5%;max-width:1500px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.eyebrow{color:var(--purple);font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase}.top h1{font-size:30px;margin:5px 0}.date{color:var(--muted)}.top-actions{display:flex;gap:10px}.pill{padding:10px 15px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:white}.primary{background:linear-gradient(100deg,var(--purple),#7455e8);color:white;border-radius:12px;padding:11px 17px;font-weight:700;box-shadow:0 8px 25px #7656e533}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,1fr);margin-bottom:18px}.card{background:linear-gradient(145deg,#19192e,#131324);border:1px solid var(--line);border-radius:18px;padding:20px}.stat-top{display:flex;justify-content:space-between;color:var(--muted)}.stat-icon{font-size:20px}.value{font-size:28px;font-weight:800;margin:9px 0 1px}.positive{color:var(--green);font-size:12px}.muted{color:var(--muted)}.main-grid{grid-template-columns:1.55fr 1fr}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.section-title h2{font-size:18px;margin:0}.chart{height:190px;display:flex;align-items:end;gap:12px;padding:20px 5px 0}.bar-wrap{flex:1;text-align:center;color:var(--muted);font-size:11px}.bar{border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,var(--purple),#5742a7);min-height:12px;margin-bottom:9px;box-shadow:0 0 20px #9875ff22}.goal{display:flex;justify-content:space-between;margin:17px 0 7px}.track{height:9px;background:#2b2a43;border-radius:20px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--pink));border-radius:20px}.workout{display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid var(--line)}.workout:last-child{border:0}.work-icon{width:45px;height:45px;border-radius:13px;background:#292344;display:grid;place-items:center;font-size:21px}.workout strong{display:block}.workout small{color:var(--muted)}.workout .tag{margin-left:auto;color:var(--green);font-size:12px}.feature-grid{grid-template-columns:repeat(3,1fr);margin-top:18px}.feature{min-height:155px;cursor:pointer;transition:.2s}.feature:hover{transform:translateY(-3px);border-color:#7860d9}.feature .emoji{font-size:26px}.feature h3{margin:10px 0 4px}.feature p{color:var(--muted);font-size:13px;margin:0}.page{display:none}.page.active{display:block}.form-card{max-width:760px}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin:13px 0}.field label{display:block;color:var(--muted);font-size:13px;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;background:#0e0e1d;color:white;border:1px solid var(--line);padding:12px;border-radius:10px}.result{white-space:pre-wrap;background:#10101f;border:1px solid var(--line);padding:17px;border-radius:12px;margin-top:16px;color:#dcd9f3;min-height:70px}.chatbox{max-width:760px}.chatlog{height:280px;overflow:auto;background:#10101f;border:1px solid var(--line);border-radius:14px;padding:15px;margin:15px 0}.bubble{padding:10px 13px;border-radius:12px;margin:8px 0;max-width:85%;background:#24223b}.bubble.user{margin-left:auto;background:#493b78}.chat-input{display:flex;gap:9px}.chat-input input{flex:1;background:#10101f;border:1px solid var(--line);border-radius:10px;padding:12px;color:white}.notice{font-size:12px;color:var(--muted);margin-top:12px}.mobile-menu{display:none}
+@media(max-width:900px){.app{grid-template-columns:1fr}.sidebar{display:none}.sidebar.open{display:block;position:fixed;z-index:5;width:250px;height:100vh}.mobile-menu{display:inline-block}.stats{grid-template-columns:repeat(2,1fr)}.main-grid{grid-template-columns:1fr}.feature-grid{grid-template-columns:1fr 1fr}main{padding:22px 5%}.top h1{font-size:24px}}
+@media(max-width:520px){.stats,.feature-grid,.form-row{grid-template-columns:1fr}.top{align-items:flex-start}.top-actions .pill{display:none}}
+
+/* Light mode theme overrides */
+:root{
+  --bg:#f5f7fc;
+  --panel:#ffffff;
+  --panel2:#f1f3fb;
+  --text:#20243a;
+  --muted:#737b91;
+  --purple:#7656e8;
+  --pink:#d66be8;
+  --green:#16865b;
+  --line:#e5e8f1;
+}
+body{
+  background:radial-gradient(circle at 80% 0%,#eee9ff 0,transparent 34%),var(--bg);
+  color:var(--text);
+}
+.sidebar{background:#ffffff;border-right:1px solid var(--line)}
+.nav-label{color:#9299aa}
+.nav button{color:#606a80}
+.nav button.active,.nav button:hover{background:#f0edff;color:#6848d8}
+.nav button.active{box-shadow:inset 3px 0 var(--purple)}
+.profile{background:#f6f7fc}
+.pill{background:#fff;color:var(--text);border-color:var(--line)}
+.card{background:#ffffff;border-color:var(--line);box-shadow:0 5px 20px rgba(36,45,75,.045)}
+.stat-top,.date,.muted{color:var(--muted)}
+.positive{color:#16865b}
+.bar{background:linear-gradient(180deg,#a38cf7,#7656e8);box-shadow:none}
+.track{background:#eceef5}
+.workout{border-bottom-color:var(--line)}
+.work-icon{background:#f0edff}
+.workout .tag{color:#16865b}
+.feature:hover{border-color:#b9a9f6}
+.field label{color:#626d84}
+.field input,.field select,.field textarea{
+  background:#fff;color:var(--text);border-color:#dfe3ed;
+}
+.result{background:#f8f9fd;border-color:var(--line);color:#39435b}
+.chatlog{background:#f8f9fd;border-color:var(--line)}
+.bubble{background:#ecebfa;color:#34304d}
+.bubble.user{background:#7656e8;color:#fff}
+.chat-input input{background:#fff;color:var(--text);border-color:#dfe3ed}
+
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+<div class="brand">fit<span>ai</span> ✦</div>
+<div class="nav-label">Workspace</div>
+<nav class="nav">
+<button class="active" data-page="dashboard">◫ &nbsp; Overview</button>
+<button data-page="workout">♧ &nbsp; Workout planner</button>
+<button data-page="nutrition">◉ &nbsp; Nutrition planner</button>
+<button data-page="coach">✧ &nbsp; AI coach</button>
+<button data-page="progress">▥ &nbsp; My progress</button>
+</nav>
+<div class="profile"><div class="avatar">Y</div><div><strong>Your profile</strong><small>Fitness journey</small></div></div>
+</aside>
+<main>
+<header class="top"><div><button class="pill mobile-menu" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div class="eyebrow">YOUR PERSONAL FITNESS SPACE</div><h1 id="heading">Good morning, champion! 👋</h1><div class="date" id="today"></div></div><div class="top-actions"><button class="pill">⚙ Settings</button><button class="primary" onclick="showPage('workout')">＋ New plan</button></div></header>
+<section class="page active" id="dashboard">
+<div class="grid stats">
+<div class="card"><div class="stat-top"><span>Weekly activity</span><span class="stat-icon">🔥</span></div><div class="value">4.5 <small style="font-size:14px">hrs</small></div><div class="positive">↑ Keep your momentum</div></div>
+<div class="card"><div class="stat-top"><span>Workouts done</span><span class="stat-icon">🏋️</span></div><div class="value">4 <small style="font-size:14px">/ 5</small></div><div class="positive">One more to hit your goal</div></div>
+<div class="card"><div class="stat-top"><span>Water intake</span><span class="stat-icon">💧</span></div><div class="value">1.8 <small style="font-size:14px">L</small></div><div class="muted">Daily goal: 2.5 L</div></div>
+<div class="card"><div class="stat-top"><span>Current streak</span><span class="stat-icon">⚡</span></div><div class="value">6 <small style="font-size:14px">days</small></div><div class="positive">You're on fire!</div></div>
+</div>
+<div class="grid main-grid">
+<div class="card"><div class="section-title"><h2>Activity overview</h2><span class="muted">This week</span></div><div class="chart">
+<div class="bar-wrap"><div class="bar" style="height:48%"></div>Mon</div><div class="bar-wrap"><div class="bar" style="height:78%"></div>Tue</div><div class="bar-wrap"><div class="bar" style="height:35%"></div>Wed</div><div class="bar-wrap"><div class="bar" style="height:92%"></div>Thu</div><div class="bar-wrap"><div class="bar" style="height:62%"></div>Fri</div><div class="bar-wrap"><div class="bar" style="height:24%"></div>Sat</div><div class="bar-wrap"><div class="bar" style="height:12%"></div>Sun</div></div><div class="goal"><span class="muted">Weekly workout goal</span><strong>4 / 5 sessions</strong></div><div class="track"><div class="fill" style="width:80%"></div></div></div>
+<div class="card"><div class="section-title"><h2>Today's plan</h2><span class="eyebrow">DAY 04</span></div>
+<div class="workout"><div class="work-icon">🧘</div><div><strong>Warm-up & mobility</strong><small>10 min · Light</small></div><span class="tag">Done ✓</span></div>
+<div class="workout"><div class="work-icon">💪</div><div><strong>Upper body strength</strong><small>25 min · Moderate</small></div><span class="tag">Next</span></div>
+<div class="workout"><div class="work-icon">🚶</div><div><strong>Cool down walk</strong><small>10 min · Easy</small></div></div>
+</div></div>
+<div class="grid feature-grid">
+<div class="card feature" onclick="showPage('workout')"><div class="emoji">🏋️</div><h3>Build a workout</h3><p>Create a routine that fits your goals and schedule.</p></div>
+<div class="card feature" onclick="showPage('nutrition')"><div class="emoji">🥑</div><h3>Plan your meals</h3><p>Get meal ideas matched to your preferences.</p></div>
+<div class="card feature" onclick="showPage('coach')"><div class="emoji">✨</div><h3>Ask your AI coach</h3><p>Get general fitness guidance and motivation.</p></div>
+</div>
+<div class="notice">Demo dashboard with sample values. Connect a backend and database to save real user data.</div>
+</section>
+<section class="page" id="workout"><div class="card form-card"><div class="eyebrow">PERSONALISED ROUTINE</div><h2>Create your workout plan</h2><p class="muted">Tell us your preferences to generate a starter routine.</p>
+<div class="form-row"><div class="field"><label>Fitness goal</label><select id="goal"><option>Build strength</option><option>Improve endurance</option><option>General fitness</option><option>Improve flexibility</option></select></div><div class="field"><label>Experience level</label><select id="level"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div><div class="field"><label>Days per week</label><select id="days"><option>3 days</option><option>4 days</option><option>5 days</option></select></div><div class="field"><label>Equipment</label><select id="equipment"><option>No equipment</option><option>Dumbbells</option><option>Full gym</option></select></div></div>
+<button class="primary" onclick="makeWorkout()">Generate starter plan ✨</button><div class="result" id="workoutResult">Your suggested routine will appear here.</div><div class="notice">Starter suggestions only—not medical or professional training advice. Adjust to your ability and stop if you feel pain.</div></div></section>
+<section class="page" id="nutrition"><div class="card form-card"><div class="eyebrow">FOOD & FUEL</div><h2>Meal planner</h2><p class="muted">Choose your preferences for balanced meal inspiration.</p>
+<div class="form-row"><div class="field"><label>Food preference</label><select id="food"><option>Vegetarian</option><option>Vegan</option><option>Eggetarian</option><option>Non-vegetarian</option></select></div><div class="field"><label>Primary goal</label><select id="mealgoal"><option>Balanced nutrition</option><option>More protein</option><option>More energy</option></select></div></div>
+<button class="primary" onclick="makeMeals()">Suggest meal ideas ✨</button><div class="result" id="mealResult">Your meal ideas will appear here.</div><div class="notice">General meal inspiration only. Nutrition needs vary; consult a registered dietitian for personalised medical nutrition advice.</div></div></section>
+<section class="page" id="coach"><div class="card chatbox"><div class="eyebrow">YOUR WELLNESS COMPANION</div><h2>Chat with FitAI</h2><p class="muted">Ask for general workout ideas, habit tips or motivation.</p><div class="chatlog" id="chatlog"><div class="bubble">Hey! I'm your FitAI demo coach. What fitness habit would you like help building today?</div></div><div class="chat-input"><input id="question" placeholder="Ask a fitness question..." onkeydown="if(event.key==='Enter')sendChat()"><button class="primary" onclick="sendChat()">Send</button></div><div class="notice">This is a local demo with preset responses, not a live AI connection.</div></div></section>
+<section class="page" id="progress"><div class="card"><div class="eyebrow">YOUR CONSISTENCY</div><h2>Progress tracker</h2><p class="muted">Your demo progress at a glance.</p><div class="grid stats"><div class="card"><div class="muted">Sessions this month</div><div class="value">12</div></div><div class="card"><div class="muted">Active minutes</div><div class="value">320</div></div><div class="card"><div class="muted">Personal best</div><div class="value">5 days</div></div><div class="card"><div class="muted">Goal completion</div><div class="value">80%</div></div></div><p class="notice">Sample progress only. Your activity is not saved between visits in this demo.</p></div></section>
+</main></div>
+<script>
+const pages=['dashboard','workout','nutrition','coach','progress'];
+function showPage(p){pages.forEach(x=>{document.getElementById(x).classList.toggle('active',x===p)});document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===p));const names={dashboard:'Good morning, champion! 👋',workout:'Let’s build your routine 💪',nutrition:'Fuel your goals 🥑',coach:'Your AI coach is here ✨',progress:'Your progress, your pace 📈'};document.getElementById('heading').textContent=names[p];document.getElementById('sidebar').classList.remove('open')}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+document.getElementById('today').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
+function makeWorkout(){let g=document.getElementById('goal').value,l=document.getElementById('level').value,d=document.getElementById('days').value,e=document.getElementById('equipment').value;let moves=e==='No equipment'?'Bodyweight squats · Wall/incline push-ups · Glute bridges · Bird dogs · March in place':'Squats · Dumbbell rows · Chest press · Hip hinges · Plank';document.getElementById('workoutResult').textContent=`${g} · ${l} · ${d}\\n\\nSession A — Full body (25–35 min)\\n${moves}\\n\\nSession B — Cardio & core (20–30 min)\\nBrisk walk or cycling · Dead bug · Side plank\\n\\nSession C — Mobility & strength (25 min)\\nStep-ups · Shoulder mobility · Glute bridges · Stretching\\n\\nStart gently, rest between sessions and adapt exercises to your ability.`}
+function makeMeals(){let f=document.getElementById('food').value,g=document.getElementById('mealgoal').value;let protein=f==='Vegetarian'?'dal, paneer or tofu':f==='Vegan'?'chickpeas, lentils or tofu':f==='Eggetarian'?'eggs, dal or paneer':'beans, fish, chicken or eggs';document.getElementById('mealResult').textContent=`${g} · ${f}\\n\\nBreakfast: Oats with fruit, nuts and yoghurt/soy yoghurt.\\nLunch: Rice or roti, seasonal vegetables and ${protein}.\\nSnack: Fruit with roasted chana or nuts.\\nDinner: Vegetable khichdi or a grain bowl with ${protein}.\\n\\nDrink water regularly and vary foods across the week. Adjust portions to your appetite and needs.`}
+function sendChat(){let input=document.getElementById('question'),q=input.value.trim();if(!q)return;let log=document.getElementById('chatlog');let u=document.createElement('div');u.className='bubble user';u.textContent=q;log.appendChild(u);let a=document.createElement('div');a.className='bubble';let low=q.toLowerCase();a.textContent=low.includes('beginner')?'Start with short, manageable sessions 2–3 times a week. Focus on learning comfortable movement patterns and allow recovery days.':low.includes('water')?'Keep water nearby and sip regularly through the day. Needs vary with activity, climate and health.':low.includes('motivat')?'Make the goal small enough to start today: even a 10-minute walk counts. Consistency beats perfection.':'A helpful starting point is to choose one realistic habit, schedule it, and increase gradually. Tell me your goal and experience level for more tailored general suggestions.';log.appendChild(a);log.scrollTop=log.scrollHeight;input.value=''}
+</script>
+</body></html>
